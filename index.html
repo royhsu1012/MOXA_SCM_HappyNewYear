@@ -1,72 +1,58 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>賀卡設計</title>
+    <title>賀卡製作</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
         }
         canvas {
             border: 1px solid #000;
-            cursor: pointer;
+            display: block;
+            margin: 20px auto;
         }
         .controls {
-            margin-top: 20px;
-        }
-        .controls input, .controls select {
-            margin: 5px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>賀卡設計</h1>
+    <h1 style="text-align:center;">賀卡製作</h1>
     <canvas id="cardCanvas" width="600" height="400"></canvas>
-    
     <div class="controls">
         <div>
-            <label for="textInput1">第一行文字:</label>
+            <label for="textInput1">文字 1:</label>
             <input type="text" id="textInput1" value="祝你生日快樂">
-            <label for="colorPicker1">顏色:</label>
             <input type="color" id="colorPicker1" value="#000000">
-            <label for="fontSizeRange1">字體大小:</label>
-            <input type="range" id="fontSizeRange1" min="10" max="60" value="36">
-            <label for="fontSelect1">字型:</label>
+            <input type="range" id="fontSizeRange1" min="10" max="100" value="36">
             <select id="fontSelect1">
                 <option value="Arial">Arial</option>
                 <option value="Verdana">Verdana</option>
-                <option value="Georgia">Georgia</option>
+                <option value="Courier New">Courier New</option>
             </select>
         </div>
         <div>
-            <label for="textInput2">第二行文字:</label>
-            <input type="text" id="textInput2" value="心想事成">
-            <label for="colorPicker2">顏色:</label>
+            <label for="textInput2">文字 2:</label>
+            <input type="text" id="textInput2" value="願你一切順利">
             <input type="color" id="colorPicker2" value="#000000">
-            <label for="fontSizeRange2">字體大小:</label>
-            <input type="range" id="fontSizeRange2" min="10" max="60" value="36">
-            <label for="fontSelect2">字型:</label>
+            <input type="range" id="fontSizeRange2" min="10" max="100" value="36">
             <select id="fontSelect2">
                 <option value="Arial">Arial</option>
                 <option value="Verdana">Verdana</option>
-                <option value="Georgia">Georgia</option>
+                <option value="Courier New">Courier New</option>
             </select>
         </div>
         <div>
-            <label for="textInput3">第三行文字:</label>
-            <input type="text" id="textInput3" value="萬事如意">
-            <label for="colorPicker3">顏色:</label>
+            <label for="textInput3">文字 3:</label>
+            <input type="text" id="textInput3" value="幸福常伴你左右">
             <input type="color" id="colorPicker3" value="#000000">
-            <label for="fontSizeRange3">字體大小:</label>
-            <input type="range" id="fontSizeRange3" min="10" max="60" value="36">
-            <label for="fontSelect3">字型:</label>
+            <input type="range" id="fontSizeRange3" min="10" max="100" value="36">
             <select id="fontSelect3">
                 <option value="Arial">Arial</option>
                 <option value="Verdana">Verdana</option>
-                <option value="Georgia">Georgia</option>
+                <option value="Courier New">Courier New</option>
             </select>
         </div>
         <button onclick="downloadCard()">下載賀卡</button>
@@ -76,9 +62,9 @@
         const canvas = document.getElementById('cardCanvas');
         const ctx = canvas.getContext('2d');
 
-        // 預設底圖
+        // 預設底圖 (假設圖片已經上傳到與 index.html 同一個資料夾)
         const background = new Image();
-        background.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVhvAvQ2U-g_wFSnscfghaKyhFFbgysZT1rQ&s'; // 使用您的圖片網址
+        background.src = 'card-background.png';  // 使用您上傳的圖片檔案
         background.onload = () => {
             ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
             drawText();
